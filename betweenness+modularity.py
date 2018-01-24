@@ -4,7 +4,7 @@ from pyspark import SparkContext
 
 sc = SparkContext()
 filename=sys.argv[1]
-#filename="C:/Users/user/Desktop/Inf553/HW5/ratings.csv"
+#filename="C:/Users/user/Desktop/ratings.csv"
 ratings = sc.textFile(filename)
 headers = ratings.top(1)
 rating = ratings.filter(lambda line: line != headers[0]).map(lambda line: line.split(",")).map(
@@ -126,8 +126,8 @@ def Community(G):
 
         modularity = tempmod
     return partition
-#output = Community(G)  this is very slow but could get result
-output = community.best_partition(G)
+output = Community(G) 
+#output = community.best_partition(G)
 def reverse(d):
     dinv = {}
     for k, v in d.items():
